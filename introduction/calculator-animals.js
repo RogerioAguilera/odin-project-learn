@@ -25,6 +25,47 @@ powerCalc.addMethod("*", (a, b) => a * b);
 powerCalc.addMethod("/", (a, b) => a / b);
 powerCalc.addMethod("**", (a, b) => a ** b);
 
+// Basic math functions
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    if (b === 0) {
+        throw new Error("Cannot divide by zero");
+    }
+    return a / b;
+}
+
+powerCalc.addMethod("add", add);
+powerCalc.addMethod("subtract", subtract);
+powerCalc.addMethod("multiply", multiply);
+powerCalc.addMethod("divide", divide);
+
+// Function to operate based on the operator
+function operate(operator, a, b) {
+    switch (operator) {
+        case '+':
+            return add(a, b);
+        case '-':
+            return subtract(a, b);
+        case '*':
+            return multiply(a, b);
+        case '/':
+            return divide(a, b);
+        default:
+            throw new Error("Invalid operator");
+    }
+}
+
 let result = powerCalc.calculate("2 ** 3");
 console.log(result); // 8
 
